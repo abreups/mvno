@@ -1,0 +1,1263 @@
+%
+% Hello! Here's how this works:
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+% If you're new to LaTeX, the wikibook at
+% http://en.wikibooks.org/wiki/LaTeX
+% is a great place to start, and there are some examples in this
+% document, too.
+%
+% Enjoy!
+%
+\documentclass[12pt]{article}
+
+\usepackage[brazil]{babel} % com o parâmetro 'brazil', sai Referências ao invés de References na bibliografia!
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc} %para que o copy and paste do PDF entenda caracteres acentuados
+\usepackage{lmodern} 
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\usepackage{geometry} % esse pacote diminui o espaço em branco das margens por default. Muitas opções disponíveis como parâmetros.
+\usepackage{todonotes} % para colocar comentário como no mode tracking do MS Word.
+\usepackage[none]{hyphenat} % para impedir a hifenização no texto.
+\usepackage{url} %para colocar URLs nas Referências.
+\usepackage{multirow} % para desenhar tabelas onde 1 coluna se aplica a várias linhas.
+\usepackage{booktabs} % pacote de tabelas. \toprule e \bottomrule dependem desse pacote.
+
+
+\title{Estudo do mercado de MVNO no mundo}
+\author{Paulo S. Abreu}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%Depois colocar o resumo aqui.
+%\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Introdução
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introdução}
+
+Esse documento apresenta o resultado do levantamento feito sobre o mercado MVNO em vários países do mundo cobrindo as regiões da Europa, Ásia, Estados Unidos e América Latina. Os artigos encontrados sobre MVNO na literatura especializada não foram muitos e geralmente MVNO era apenas um sub-item da análise do mercado de telefonia móvel. 
+
+No entanto, enteder o mercado de telefonia móvel em cada país é fundamental para se entender como o mercado de MVNO se desenvolveu naquela região. Desta forma, grande parte do material apresentado contém dados sobre o mercado de telefonia celular, além das informações sobre MVNO encontradas.
+
+A Europa é onde o mercado de MVNO parece estar mais desenvolvido. Para essa região, enumerar todos os provedores de MVNO (e até mesmo as MNOs) é uma tarefa árdua devido ao grande número de provedores. Dessa forma, apenas os nomes encontrados nos artigos pesquisados foram listados. Há, no entanto, características nesse mercado que podem ser aprendidas e reaproveitadas, e estas estão apresentadas no documento.
+
+Apesar das diversidades de mercado há características comuns no negócio de MVNO. Essas características -- que basicamente são ``lições aprendidas'' dos mercados mais desenvolvidos -- são apresentadas em duas seções no final do documento: uma mais específica sobre a alocação de custos em uma empresa MVNO e outra listando pontos mais genéricos (ou ``miscelânea'', se preferir).
+
+O objetivo desse estudo não é chegar a ``conclusões irrefutáveis'', mas sim apresentar o \textit{status} do mercado de MVNO no mundo e com isso subsidiar os pontos a serem apresentados pela Artele à Anatel para alterações na resolução 550. É tão somente um coleção de fatos; cabe ao grupo interpretá-los e utilizálos da forma que lhes parecer melhor.
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Definições
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Definições}
+\label{sec:definicoes}
+
+
+\begin{description}
+
+\item[MVNO] Mobile Virtual Network Operator (Operador de Rede Móvel Virtual). De acordo com:
+	\begin{itemize}
+    \item Gartner \cite{china1}: é um provedor de serviço móvel que vende serviços móveis sob sua própria marca usando a rede de um operador móvel licenciado. Um MVNO não possui a rede móvel física, mas deveria pelo menos ter     
+seu próprio atendimento ao cliente e sistemas de suporte ao serviço. Ele pode possuir um ou mais dos seguintes items: (a) entrega e gerenciamento do serviço, (b) faturamento ou sistema de suporte à operação, (c) integração e agregação de serviços.
+
+	\item Ovum \cite{ovum1}: Um provedor de serviços móveis que não possui espectro próprio ou rede de acesso de rádio mas que oferece serviços de comunicação móvel de varejo a consumidores e/ou clientes corporativos.
+	
+    \end{itemize}
+    
+\item[MNO] Mobile Network Operator (Operador de Rede Móvel). Um provedor serviços fim a fim que possui espectro e todos os ativos de rede necessários para prover um serviço de comunicação móvel completo. \cite{ovum1}
+
+\item[MVNA] Mobile Virtual Network Aggregator (Agregador de Rede Móvel Virtual). Age como uma empresa intermediária entre a MNO e a MVNO. Ela se integra tecnicamente com a MNO e tem o acordo comercial com a MNO. \cite{ovum1}
+
+\item[MVNE] Mobile Virtual Network Enabler (Habilitador de Rede Móvel Virtual). Age como uma empresa intermediária entre a MNO e a MVNO onde a MNO tem a relação comercial direta com a MVNO mas a integração técnica é deixada a cargo da MVNE e da MVNA\footnote{Essa definição é um pouco confusa mas deixa a entender que a MVNE provê soluções tais como sistemas de backoffice, e não provê a conectividade.}. \cite{ovum1}
+
+\item[MTR] Mobile Termination Rates (Tarifas de Terminação Móvel). São as tarifas que as operadoras móveis devem pagar entre si quando uma chamada é feita da rede de uma operadora para a outra.
+
+\item[MNP] Mobile Number Portability (Portabilidade Numérica Móvel). Permite ao cliente mudar de operadora móvel e manter seu número de telefone.
+
+\item[VAS] Mobile Value-added Services (Serviços Móveis de Valor Agregado). É composto de serviços avançados que acrescentam valor ao serviço básico de telecomunicações e serviços de interconexão para os quais licenças separadas são emitidas. Esses serviços incluem mensagens de texto (SMS), banda larga móvel e serviços \textit{machine-to-machine} (M2M)\footnote{Serviços M2M são aqueles onde uma conexão de dados é usada por uma função automática executada por uma máquina. Usos comuns de M2M incluem máquinas de cartão de crédito usadas em Pontos de Venda e sistemas de medição inteligentes (\textit{smart metering}). \cite{fs2}}.
+
+\end{description}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Regiões
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Regiões}
+\label{sec:regioes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Europa
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Europa}
+\label{sec:europa}
+
+Fontes: Ovum \cite{ovum1}, Current Analysis \cite{curan1}, dentre outras (indicadas no texto).
+
+\begin{itemize}
+
+\item Grandes operadoras européias que atuam em mercados MVNO fortes rotineiramente recebem mais de 100 solicitações de conexão de aspirantes a MVNO por ano. Não é factível para operadoras atender a essa demanda e elas então estão desenvolvendo critérios para filtrar os solicitantes a um número mais administrável. Alguns desses critérios são: força da marca e dos canais de distribuição, suporte financeiro e consistência do modelo de negócio proposto.
+
+\item O modelo de MVNO europeu ainda é uma ``proposta local''. As MVNOs não conseguem aplicar facilmente as lições aprendidas em um país a outro (regulamentações e dinâmica de mercados diferentes em cada país). As únicas MVNOs que alcançaram cobertura em vários países foram operadoras de chamada internacional de baixo custo, tais como `Lebara Mobile' e `Lycamobile' (esta última, a maior MVNO da Espanha em 2012, que se expandiu para Portugal em outubro daquele ano).
+
+\item Várias MNOs fizeram parcerias com redes de supermercado e outros grandes nomes de varejo que desejavam entrar no mercado de MVNO. Essas parcerias aparentam ser mais bem sucedidas que outros modelos de MVNO pois conseguem atrair rapidamente um volume muito alto de usuários. A mesma tendência está presente nos setores bancário e de serviços postais. Exemplo: `Tesco Mobile', do Reino Unido, que já possui uma rede de 3 milhões de clientes\footnote{A Tesco Mobile pertence ao grupo Tesco PLC, que é uma rede de hipermercados de origem Britânica com operações em 12 países da Europa, Ásia e Estados Unidos \cite{tesco1}}.
+
+\item Outros candidatos a entrar no mercado de MVNOs: redes sociais, times de futebol, canais de TV de música e esporte, fabricantes de carros, instituições de caridade, redes de franquias (e.g., cafés), provedores alternativos de banda larga fixa que procuram expandir sua oferta de produtos.
+	
+    \begin{itemize}
+	
+    \item Há também segmentos de consumidores não necessariamente atrelados a marcas. Exemplos: comunidades étnicas e imigrantes (os mais comuns), ``terceira idade'' (`Mobiho Essentiel', França), pais que buscam prover conectividade a crianças (`Bemilo', Reino Unido), ``\textit{green services}'' (`C Mobile', Reino Unido).
+	
+    \item Fabricantes OEM e empresas de serviço \textit{over-the-top} (OTT) já começaram a entrar no mercado MVNO para criar produtos ``\textit{out-of-the-box}'' tais como \textit{smartphones}, \textit{e-readers} e \textit{tablets} que já vêm com a capacidade de conexão via rede de celular. Exemplos: `Dell NetReady' \cite{delluk} e `DataWind Ubisurfer' \cite{ubis}, e o serviço da Amazon `Whispernet' nos Estados Unidos \cite{amaz} (tido como o maior exemplo desse tipo de atuação).
+    
+    \end{itemize}
+    
+\item MVNEs e MVNAs existem no mercado Europeu há vários anos mas sua atuação no mercado está se expandindo. Elas simplicam o processo de negociação e conexão entre MVNOs e MNOs, ajudando as MVNOs a negociar com as MNOs e ajudando as MNOs a aumentar o número de MVNOs (a iniciativa pode partir de qualquer um dos lados).
+	\begin{itemize}
+    \item A `EE' (`Everything Everywhere', Reino Unido) \cite{eeuk} está trabalhando com a MVNA `Transatel' e já assinou 25 acordos de MVNO.
+    \item A `Vodafone' (Reino Unido) está trabalhando com as MVNAs `Gamma Telecom' e `Cognatel'para aumentar o número de MVNOs que utilizam sua rede.
+    \end{itemize}
+
+\item A regulamentação de \textit{roaming} na Comunidade Européia deve mudar em 2014 permitindo aos clientes das MNOs comprar serviços de \textit{roaming} separadamente, de terceiros. Isso diminuirá a desvantagem que as MVNOs têm hoje contra os fornecedores de atacado \textit{Tier 1}.
+
+\item Reguladores estão obrigando a abertura das redes LTE para MVNOs na França.
+
+
+%%
+%% França
+%%
+%\subsubsection{França}
+
+%\begin{itemize}
+
+%\item Reguladores estão obrigando a abertura das redes LTE para MVNOs \cite{ovum1}.
+
+%\item Lista parcial de provedores de serviços móveis (citados nos artigos):
+%	\begin{itemize}
+	
+%    \item MVNOs: Mobiho Essentiel.
+	
+%    \end{itemize}
+    
+%\end{itemize}
+
+
+%%
+%% Reino Unido
+%%
+%\subsubsection{Reino Unido}
+
+%\begin{itemize}
+
+%\item Lista parcial de provedores de serviços móveis (citados nos artigos):
+%	\begin{itemize}
+	
+%    \item MNOs: O2, Vodafone, EE (Everything Everywhere) \cite{eeuk}.
+
+%	\item MVNOs: Tesco Mobile \cite{curan1}, Bemilo, C Mobile, Dell NetReady Broadband Access (usa a rede da O2) \cite{delluk}, Ubisurfer \cite{ubis}.
+
+%	\item MVNAs e MVNEs: Gamma Telecom, Cognatel, Transatel.
+
+%	\end{itemize}
+    
+%\end{itemize}
+
+
+%%
+%% Espanha
+%%
+%\subsubsection{Espanha}
+
+%\begin{itemize}
+
+%\item Lista parcial de provedores de serviços móveis (citados nos artigos):
+%	\begin{itemize}
+
+%	\item MNOs: Vodafone.
+    
+%    \item MVNOs: Lycamobile \cite{curan1}, Lebara Mobile (usa a MNO Vodafone)  \cite{lebara1}
+	
+%    \end{itemize}
+    
+%\end{itemize}
+
+\item Quantidade de MVNOs em alguns países da Europa de acordo com \cite{mvnodir}:
+
+		\begin{tabular}{c|c}
+		País		&	Número de MVNOs\\
+		\hline
+		Alemanha	&	56	\\
+		Espanha		&	23	\\
+		Holanda		&	38	\\
+		Itália		&	16	\\
+		França		&	26	\\
+		Portugal	&	2	\\
+        Reino Unido	&	48	\\
+        Suíça		&	12	\\
+		\end{tabular}
+
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    América do Norte
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{América do Norte}
+
+%%
+%% Estados Unidos
+%%
+\subsubsection{Estados Unidos}
+
+Fontes: Ovum \cite{ovum1}, dentre outras (citadas no texto).
+
+\begin{itemize}
+
+
+\item Sprint: é a MNO mais proativa no mercado de MVNOs. Atende ao mercado de MVNO a partir de sua unidade de Atacado (\textit{Wholesale}), ao invés de sua unidade Wireless.
+
+\item T-Mobile: após a tentativa de compra pela AT\&T, a T-Mobile aumentou seu foco no mercado de MVNO com uma plataforma nova.
+
+\item Verizon e AT\&T: são as mais reticentes em sua relação com o mercado de MVNO.
+
+\item Desenvolveu-se uma tendência no mercado americano de \textit{revenue sharing}. A MVNO paga à MNO uma taxa anual e então compartilha uma porcentagem de sua receita de cada cliente com a MNO, normalmente em torno de 30\%.
+
+    
+\item MNOs: há 63 MNOs nos EUA de acordo com \cite{mnodir}, dentre elas :Verizon, AT\&T, T-Mobile, Sprint.
+    
+\item MVNOs: há 55 MVNOs nos EUA de acordo com \cite{mvnodir}.
+
+    
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Ásia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ásia}
+
+%%
+%% China
+%%
+\subsubsection{China} 
+
+Fonte: Gartner \cite{china1}
+
+
+\begin{itemize}
+
+\item Em 8 de janeiro de 2013, o Ministério da Indústria e Tecnologia da Informação da China lançou um programa piloto para negócios de revenda de serviços móveis. Este programa encoraja investidores privados a entrar no altamente regulado mercado de serviços de telecomunicações Chinês. O piloto será efetivo por 2 anos.
+
+\item O programa permite que companhias autorizadas vendam serviços móveis sob sua própria marca usando a rede de operadores móveis. No entanto, essa companhias não deverão construir sua própria infra-estrutura. A empresa autorizada é denominada um MVNO.
+
+\item Até abril de 2013, empresas estrangeiras e empresas públicas regionais não estão incluídas no piloto. Há dúvida de se \textit{joint-ventures} entre empresas estrangeiras e nacionias chinesas poderão participar (é provável que sim).
+
+\item O mercado móvel Chinês ainda está em período de maturação, apesar de ser o maior mercado móvel do mundo em termos de base de usuários.
+
+\item O regulador Chinês forçou as operadoras móveis a se abrirem ao mercado MVNO. Elas devem:
+
+	\begin{itemize}
+    
+    	\item Firmar um acordo de revenda com pelo menos dois MVNOs.
+
+		\item Prover qualidade de serviço consistente para conexões físicas com os MVNOs.
+
+		\item Prover numeração móvel de forma contínua (sem restrições de recursos) aos MVNOs.
+
+		\item Prover o menor preço de atacado para os MVNOs.
+    
+    \end{itemize}
+
+
+\item 3 MNOs: China Mobile (China Mobile Communications Corporation), China Telecom (China Telecommunications Corporation), China Unicom (China Unicom -- Hong Kong -- Limited) \cite{mnodir}.
+
+\end{itemize}
+
+%%
+%% India
+%%
+\subsubsection{India}
+
+Fonte: Ovum \cite{india1}.
+
+\begin{itemize}
+
+\item Órgão regulador: Telecom Regulatory Authority of India (TRAI). A TRAI é administrada pelo DoT (\textit{Department of Telecommunications} -- Departamento de Telecomunicações) que é uma das principais divisões do MCIT (\textit{Ministry of Communications and Information Technology} -- Ministério das Comunicações e da Tecnologia da Informação).
+
+\item O mercado de telefonia fixa na Índia tem uma penetração de apenas 2,7\% com 32,2 milhões de usuários (\textit{subscribers}) em março de 2012 e decresce 7,4\% ano após ano. 76,5\% desse mercado é em áreas urbanas.
+
+\item O mercado de telefonia móvel da Índia é considerado muito competitivo com 15 operadoras (13 são empresas privadas) oferecendo serviços sob as licenças UASL (\textit{Unified Access Service Licences} -- permite à operadora oferecer serviços fixo, móvel, e serviços de dados, inclusive de acesso local \textit{wireless},  em uma única licença) e CMTS (\textit{Cellular Mobile Telephone Service} -- serviço de telefonia móvel celular).
+	\begin{itemize}
+    \item A obtenção de uma licença UASL é separada da obtenção de espectro. O espectro deve ser adquirido separadamente e é permitido compartilhar espectro entre operadoras.
+    \end{itemize}
+
+\item O mercado de telefonia móvel tinha em março de 2012 uma penetração de 76,0\% com 919,2 milhões de usuários (\textit{subscribers}). 64,8\% desse mercado era em áreas urbanas.
+
+\item As linhas pré-pagas correspondem a 95,9\% do total.
+
+\item Lista parcial de provedores de serviços móveis (citados nos artigos):
+\begin{itemize}
+
+\item MNOs (Vide tabela de Marketshare para lista completa):
+	
+    \begin{itemize}
+    \item Modi Telstra / Airtel: inciou operações em 1995. Foi adquirida pela Airtel em 2005.
+    \item RPG Cellular / Aircel: iniciou operações em 1995. Foi adquirida pela Aircel em 2003.
+    \item MTNL (\textit{Hahanagar Telephone Nigam Limited}): incumbente de telefonia fixa. Entrou no mercado de telefonia em 2001.
+    \item BSNL (\textit{Bharat Sanchar Nigam Limited}): incumbente de telefonia fixa. Entrou no mercado de telefonia em 2002.
+    \item MTS (\textit{Sistema Shyam TeleServices}): entrou no mercado de telefonia móvel em março de 2009.
+    \item Uninor (composta pela \textit{S Tel} e pela \textit{Unitech Wireless}): entrou no mercado de telefonia móvel em dezembro de 2009.
+    \item Cheers Mobile (composta pela \textit{Videocon} e pela \textit{Etisalat}): entrou no mercado de telefonia móvel em março de 2010.
+    \end{itemize}
+
+\item MVNOs: Virgin Mobile, T24 (ambas usam a rede da Tata).
+
+\end{itemize}
+
+\item Marketshare:
+	\begin{itemize}
+   	\item Por linhas. Total de 919,2 milhões de linhas (em março de 2012):
+
+		\begin{tabular}{c|c}
+		Operadora	&	Marketshare	\\
+		\hline
+		Airtel		&	19,7\%	\\
+		Reliance	&	16,7\%	\\
+		Vodafone	&	16,4\%	\\
+		Idea		&	12,3\%	\\
+		BSNL		&	10,7\%	\\
+        Tata		&	8,9\%	\\
+        Aircel		&	6,8\%	\\
+        Uninor		&	4,6\%	\\
+        Sistema		&	1,7\%	\\
+        MTNL		&	0,6\%	\\
+        Videocon	&	0,6\%	\\
+        S Tel		&	0,4\%	\\
+        Loop		&	0,4\%	\\
+        HFCL		&	0,1\%	\\
+        Etisalat	&	0,1\%	\\
+		\end{tabular}
+	\end{itemize}
+
+
+    
+\item A estrutura de licenciamento para MVNOs foi anunciada em fevereiro de 2009 e aprovado pelo DoT em março de 2009.
+    
+\item O valor das licenças variam de US\$196 mil para uma licença regional de áreas rurais e pequenas cidades até US\$17 milhões para uma licença nacional.
+    
+\item A Virgin Mobile já estava presente na Índia desde março de 2008 através de um ``acordo de franquia de marca'' com a operadora Tata.
+    
+\item Em junho de 2010 o Future Group -- a maior rede de varejo da Índia -- lançou a MVNO T24 também usando a operadora Tata.
+    
+\item Em abil de 2011 e em abril de 2012 a TRAI propôs duas mudanças de regra no licenciamento de MVNOs que até agosto de 2012 ainda estavam em análise pelo DoT. A primeira delas permitiria ao detentor de uma licença UASL que não possua espectro atuar como uma MVNO em qualquer um dos serviços licenciados pela MNO parceira. Na segunda recomendação a TRAI propõe que um provedor de serviços regional (com licença UASL) poderia também atuar como uma MVNO.
+    
+\item \textit{Local loop unbundling} não está disponível na Índia.
+    
+\item Mercado móvel atacado -- serviços e regulamentação:
+   	\begin{itemize}
+    \item Obrigado a oferecer: terminação móvel (\textit{mobile termination}), portabilidade numérica, \textit{roaming} nacional. Todos \textit{cost-based}.
+    \item Desobrigado a oferecer: \textit{number translation services}, \textit{indirect access}.
+    \end{itemize}
+    
+
+\end{itemize}
+
+
+
+%%
+%% Japão
+%%
+\subsubsection{Japão}
+
+\begin{itemize}
+
+\item Reguladores estão obrigando a abertura das redes LTE para MVNOs \cite{ovum1}.
+
+\end{itemize}
+
+
+%%
+%% Rússia
+%%
+\subsubsection{Rússia}
+
+\begin{itemize}
+
+\item Reguladores estão obrigando a abertura das redes LTE para MVNOs \cite{ovum1}.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    América Latina
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{América Latina}
+
+\begin{itemize}
+
+\item Chile e Colômbia destacam-se na América Latina como os mercados de MVNO mais dinâmicos da região. \cite{latam1}
+
+\item O mercado de MVNO tem sido uma longa promessa na América Latina desde os anos 2000, e muitos esperam que este segmento seja dominado por grandes redes varejistas (dada sua significativa participação na venda de dispositivos móveis), bem como outras empresas procurando aumentar o relacionamento com seus clientes em seu core business. \cite{latam1}
+
+\item A satisfação dos clientes com os serviços de telefonia móvel tem muito espaço para crescimento e é esperado das MVNOs que tragam competição diferenciando-se pelo foco na satisfação dos clientes. \cite{latam1}
+	\begin{itemize}
+    \item  A Virgin Mobile Chile foi elogiada pelo Regulador por seu serviço de atendimento ao cliente \textit{in-house} (ao contrário de seus competidores) e pelo excelente uso da Internet como canal de comunicação. \cite{latam1}
+    \end{itemize}
+    
+\item A portabilidade numérica móvel deve incentivar o mercado de MVNOs na América Latina. \cite{latam1}
+
+
+\end{itemize}
+
+
+%%
+%% Argentina
+%%
+\subsubsection{Argentina}
+
+Fonte: Frost \& Sullivan \cite{fs2}.
+
+	\begin{itemize}
+    
+    \item Estágio do mercado de telefonia móvel (nascente, cresimento, maduro): maduro.
+
+	\item 4 MNOs: Movistar, Personal, Claro, Nextel.
+
+    \item 1 MVNO: Nuestro 
+
+    \item É o mercado mais maduro da América Latina, onde dados e VAS representam 37,1\% da receita das operadoras.
+
+    \item Tem uma das taxas de interconexão mais altas da região e os Reguladores não têm demonstrado interesse em reduzí-las. Enquanto isso, as operadoras vêm regularmente aumentando os preços, parcialmente para endereçar a alta inflação e a depreciação da moeda.
+
+\item Linhas pré-pagas versus pós-pagas:
+
+		\begin{tabular}{c|c|c}
+		Ano		&	Linhas pré-pagas	&	Linhas pós-pagas	\\
+		\hline
+		2011	&	41,7 milhões (74,6\%) 	& 14,2 milhões (25,4\%)	\\
+		2017	&	53,8 milhões (73,8\%)	& 19,1 milhões (26,2\%) \\
+		\end{tabular}
+
+%    \item Linhas pré-pagas: 41,7 milhões; pós-pagas: 14,2 milhões (2011)
+
+%    \item Linhas pré-pagas: 53,8 milhões; pós-pagas: 19,1 milhões (2017)
+
+%    \item Average Revenue Per Line (ARPL) em 2011: US\$14,64 [F\&S2]
+
+    \item Taxa de penetração (linhas móveis como porcentagem da população):
+
+		\begin{tabular}{c|c l}
+		Ano		&	Taxa de penetração	&	\\
+		\hline
+		2011	&	136,9\% 	& (ARPL = US\$14,64 por mês)	\\
+		2012	&	144,0\%		&	\\
+		2013	&	150,1\%		&	\\
+		2017	&	168,9\%		& (ARPL = US\$14,75 por mês) \\
+		\end{tabular}
+
+
+    \item Em setembro de 2009, a cooperativa Federación de Cooperativas Telefónicas del Sur Limitada (FECOSUR) lançou a primeira MVNO da Argentina: Nuestro.
+
+    \item Marketshare:
+		\begin{itemize}
+    	\item Por receita. Receita líquida em 2011 de US\$9,83 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Movistar	&	33,2\%	\\
+			Personal	&	30,9\%	\\
+			Claro		&	29,2\%	\\
+			Nextel		&	6,6\%	\\
+			Nuestro		&	0,1\%	\\
+			\end{tabular}
+
+    	\item Por linhas. Total de 56,0 milhões de linhas:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Movistar	&	30,0\%	\\
+			Personal	&	32,5\%	\\
+			Claro		&	35,0\%	\\
+			Nextel		&	2,5\%	\\
+			Nuestro		&	0,1\%	\\
+			\end{tabular}
+
+    	\item Por receita de Dados e Serviços de Valor Agregado (VAS). Receita líquida em 2011 US\$3,65 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Movistar	&	34,9\%	\\
+			Personal	&	40,0\%	\\
+			Claro		&	23,5\%	\\
+			Nextel		&	1,2\%	\\
+			Nuestro		&	0,3\%	\\
+			\end{tabular}
+
+        \end{itemize}
+
+	\end{itemize}
+
+
+
+%%
+%% Brasil
+%%
+\subsubsection{Brasil}
+
+Fonte: Frost \& Sullivan (\cite{fs2} e \cite{fs1}), dentre outras (citadas no texto).
+    
+    \begin{itemize}
+    
+    \item 7 MNOs: VIVO, TIM, Claro, Oi, Nextel, CTBC, Sercomtel.
+    
+    \item 1 MVNO: Porto Seguro Telecomunicações S.A.
+    
+    \item 2 MVNEs: Sisteer, simfonics \cite{simf}.
+
+    \item TIM é a principal MNO promovendo MVNOs. Em abril de 2011 a TIM fechou um acordo com a MVNE Sisteer para oferecer uma plataforma para futuras entregas. O primeiro lançamento comercial foi a Porto Seguro Telecomunicações S.A. (Porto Seguro Conecta).
+
+    \item Estágio do mercado de telefonia móvel (nascente, cresimento, maduro): crescimento.
+
+%    \item Linhas pré-pagas: 198,2 milhões; pós-pagas: 48,2 milhões (2011)
+
+%    \item Linhas pré-pagas: 319,6 milhões; pós-pagas: 96,0 milhões (2017)
+
+
+\item Linhas pré-pagas versus pós-pagas:
+
+		\begin{tabular}{c|c|c}
+		Ano		&	Linhas pré-pagas	&	Linhas pós-pagas	\\
+		\hline
+		2011	&	198,2 milhões (80,4\%) 	& 48,2 milhões (19,6\%)	\\
+		2017	&	319,6 milhões (76,9\%)	& 96,0 milhões (23,1\%) \\
+		\end{tabular}
+
+
+
+    \item Taxa de penetração:
+
+		\begin{tabular}{c|c l}
+		Ano		&	Taxa de penetração	&	\\
+		\hline
+		2011	&	128,0\% 	& (ARPL = US\$11,75 por mês)	\\
+		2012	&	146,2\%		&	\\
+		2013	&	162,0\%		&	\\
+		2017	&	206,9\%		& (ARPL = US\$10,51 por mês) \\
+		\end{tabular}
+
+
+        
+    \item Marketshare:
+		\begin{itemize}
+    
+    	\item Por receita. Receita líquida em 2011 de US\$34,73 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			VIVO		&	30,6\%	\\
+			TIM			&	24,0\%	\\
+			Claro		&	21,4\%	\\
+			Oi			&	13,7\%	\\
+			Nextel		&	9,9\%	\\
+			Outras (CTBC, Sercomtel)	&	0,5\%	\\
+			\end{tabular}
+
+
+    	\item Por linhas. Total de 246,3 milhões de linhas móveis:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			VIVO		&	29,0\%	\\
+			TIM			&	26,0\%	\\
+			Claro		&	24,5\%	\\
+			Oi			&	18,5\%	\\
+			Nextel		&	1,7\%	\\
+			Outras (CTBC, Sercomtel)	&	0,3\%	\\
+			\end{tabular}
+
+
+    	\item Por receita de Dados e Serviços de Valor Agregado (VAS). Receita líquida em 2011 US\$6,58 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			VIVO		&	42,1\%	\\
+			TIM			&	19,9\%	\\
+			Claro		&	22,3\%	\\
+			Oi			&	9,6\%	\\
+			Nextel		&	5,9\%	\\
+			Outras (CTBC, Sercomtel)	&	0,2\%	\\
+			\end{tabular}
+
+
+		\end{itemize} % Marketshare
+    \item A regulamentação de MVNO é de 2010 e motivou outros países da região a lançarem suas próprias regulamentações (e.g. Colômbia e México).
+
+    \item Ações reguladoras têm feito pouco para desenvolver as operações MVNO no Brasil, onde apenas uma operadora está atualmente em operação (a empresa de seguros Porto Seguro, com um serviço M2M de rastreamento de veículos).
+
+    \item A operadora Virgin Mobile é líder mundial em MVNO e é esperado que ela entre no Brasil em 2013 (já está presente no Chile e Colombia).
+
+    \item Devido aos serviços M2M estarem atualmente concentrados em conectividade eles geram uma baixa receita média por linha (ARPL - Average Revenue Per Line) de aproximadamente US\$5 por mês, e as margem são estreitas. Fatores que restringem um maior desenvolvimento do mercado incluem a alta carga tributária no Brasil, a taxa regulatória paga cada vez que uma linha é ativada, e o imposto anual Fistel. O Ministério da Comunicações e a Anatel estão se mobilizando para eximir linhas M2M do Fistel, de acordo com a Medida Provisória 563/2013.
+
+    \item Impostos altos cobrados sobre os serviços de telefonia móvel (o 12\textsuperscript{\underline{o}} maior do mundo, de acordo com a associação industrial GSMA) bem como tarifas de terminação móvel (MTRs) altas, inibem o tráfego de voz no Brasil.
+
+    \item Cortes severos nas MTRs, que representam uma larga parte da receita para operadoras, são esperados nos próximos anos. O incentivo para crescimento de tráfego de voz forçará as operadoras a buscar outras fontes de receita para substituir a queda de receita das interconexões.
+
+	\end{itemize}
+
+%%
+%% Chile
+%%
+\subsubsection{Chile}
+
+Fontes: Frost \& Sullivan \cite{fs2}, Ovum \cite{chile1}.
+
+\begin{itemize}
+	%\item 5 MNOs e 1 MVNO.
+
+	\item Regulador: Subtel (Subsecretaria de Telecomunicaciones)
+ 
+    \item 5 MNOs: Movistar, Entel, Claro, Nextel, Mobilink (mercado de push-to-talk apenas).
+
+    \item 1 MVNO: Virgin Mobile.
+
+    \item Estágio do mercado de telefonia móvel (nascente, cresimento, maduro): maduro.
+
+    \item Linhas pré-pagas: 17,3 milhões; pós-pagas: 7,3 milhões (2011)
+
+    \item Linhas pré-pagas: 22,1 milhões; pós-pagas: 11,9 milhões (2017)
+
+\item Linhas pré-pagas versus pós-pagas:
+
+		\begin{tabular}{c|c|c}
+		Ano		&	Linhas pré-pagas	&	Linhas pós-pagas	\\
+		\hline
+		2011	&	17,3 milhões (70,3\%) 	& 7,3 milhões (29,7\%)	\\
+		2017	&	22,1 milhões (65,0\%)	& 11,9 milhões (35,0\%) \\
+		\end{tabular}
+
+
+    \item Taxa de penetração:
+
+		\begin{tabular}{c|c l}
+		Ano		&	Taxa de penetração	&	\\
+		\hline
+		2011	&	142,1\% 		& (ARPL = US\$16,16 por mês)	\\
+		2012	&	155,8\%		&	\\
+		2013	&	166,2\%		&	\\
+		2017	&	187,3\%		& (ARPL = US\$16,68 por mês) \\
+		\end{tabular}
+
+
+
+    \item Marketshare:
+		\begin{itemize}
+    	\item Por receita. Receita líquida em 2011 de US\$4,75 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Entel		&	42,1\%	\\
+			Movistar	&	41,0\%	\\
+			Claro		&	16,4\%	\\
+			Nextel		&	0,5\%	\\
+			Outras (Mobilink, GTD Móvil)	&	0,01\%	\\
+			\end{tabular}
+
+
+    	\item Por linhas. Total de 24,5 milhões de linhas móveis:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Entel		&	38,1\%	\\
+			Movistar	&	39,0\%	\\
+			Claro		&	22,6\%	\\
+			Nextel		&	0,3\%	\\
+			Outras (Mobilink, GTD Móvil)	&	0,01\%	\\
+			\end{tabular}
+
+
+    	\item Por receita de Dados e Serviços de Valor Agregado (VAS). Receita líquida em 2011 US\$1,17 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Entel		&	49,7\%	\\
+			Movistar	&	31,7\%	\\
+			Claro		&	18,4\%	\\
+			Nextel		&	0,2\%	\\
+			Outras (Mobilink, GTD Móvil)	&	0,001\%	\\
+			\end{tabular}
+
+
+		\end{itemize} % Marketshare
+
+   
+
+%    \item 3,37 milhões de linhas fixas de telefone em uso (Dezembro de 2011)
+%		\begin{itemize}
+%    	\item Telefonia: 55,0\%
+%    	\item VTR: 18,5\%
+%    	\item GTD: 10,2\%
+%    	\item Claro: 6,7\%
+%    	\item Entel: 6,1\%
+%    	\item Outras: 2,4\%
+%		\end{itemize}
+        
+        
+    \item O mercado móvel do Chile está se aproximando da saturação.
+
+    \item Em um mercado maduro as empresas concentram-se em aumentar o ARPL.
+
+    \item MVNOs estão presentes no Chile desde 2006-07, apesar das três maiores MNOs se oporem ao processo de concessão das licenças.
+
+    \item Operadoras fixas que desejavam entrar no mercado móvel pediram à Subtel que fizesse mais no sentido de obrigar as operadoras tradicionais a tornar o processo de MVNO mais fácil, principalmente no que diz respeito à interconexão. O Regulador, no entanto, adotou um postura de não interferência até o momento (Junho de 2012) e os candidatos a MVNO só podem entrar no mercado através de acordos diretos com  as MNOs.
+
+    \item A Subtel não se envolve em análises de mercado periódicas para identificar operadoras com Poder de Mercado Significativo (PMS) nem introduz medidas regulatórias para endereçar a questão. No entanto, se o TDLC (Tribunal de Defesa da Livre Competição) identificar operadoras com PMS em certos mercados isso vai disparar medidas regulatórias. O último evento desse tipo ocorreu em 2009 quando o TDLC publicou uma regra sobre o nível de competição para serviços de telefonia fixa ainda sujeito a preços regulados a pedido do Ministério de Transportes e Telecomunicações.
+
+    \item De forma geral, serviços de varejo (retail) no Chile são altamente desregulamentados, e as regulamentações de tarifas vão gradualmente desaparecendo.
+
+    \item Mercado móvel atacado - serviços e regulamentação:
+		\begin{itemize}
+    	\item Obrigado a oferecer: terminação móvel (mobile termination), portabilidade numérica. Ambos cost-based.
+
+    	\item Desobrigado a oferecer: roaming nacional, number translation services, MVNO access.
+		\end{itemize}
+        
+    \item Virgin, uma nova MVNO, teve forte crescimento desde seu lançamento em Abril de 2012, com uma estratégia focada em usuários pré-pagos.
+
+
+
+\end{itemize}
+
+
+%%
+%% Colômbia
+%%
+\subsubsection{Colômbia}
+
+Fontes: Frost \& Sullivan (\cite{fs1}, \cite{fs2}), Ovum \cite{colombia1}.
+
+\begin{itemize}
+
+    \item Estágio do mercado de telefonia móvel (nascente, cresimento, maduro): crescimento.
+
+    \item 4 MNOs: Comcel (Claro), Movistar, Tigo, Avantel (Nextel).
+
+    \item 4 MVNOs: UNE, ETB, Uff! Móvil. (as 3 utilizam a rede da Tigo), Virgin (usa a rede da Movistar).
+
+    \item Regulador: CRC (Comisión de Regulación de Comunicaciones), anteriormente conhecido por CRT (Comisión de Regulación de Telecomunicaciones).
+        
+	\item Linhas pré-pagas versus pós-pagas:
+
+		\begin{tabular}{c|c|c}
+		Ano		&	Linhas pré-pagas	&	Linhas pós-pagas	\\
+		\hline
+		2011	&	37,0 milhões (81,1\%) 	& 8,6 milhões (18,9\%)	\\
+		2017	&	58,7 milhões (78,6\%)	& 16,0 milhões (21,4\%) \\
+		\end{tabular}
+
+
+%    \item Linhas pré-pagas: 37,0 milhões; pós-pagas: 8,6 milhões (2011).
+
+%    \item Linhas pré-pagas: 58,7 milhões; pós-pagas: 16,0 milhões (2017).
+
+    \item Average Revenue Per Line (ARPL) em 2011: US\$10,89. É o valor mais baixo em toda a América Latina.
+
+    \item Taxa de penetração:
+
+		\begin{tabular}{c|c l}
+		Ano		&	Taxa de penetração	&	\\
+		\hline
+		2011	&	99,0\% 		& (ARPL = US\$10,89 por mês)	\\
+		2012	&	108,8\%		&	\\
+		2013	&	118,6\%		&	\\
+		2017	&	151,4\%		& (ARPL = US\$10,56 por mês) \\
+		\end{tabular}
+
+		\begin{itemize}
+        \item Com 99,0\% de taxa de penetração em 2011, a Colômbia era um dos poucos países da região que não não havia atingido o índice de 100\%.
+        \end{itemize}
+
+
+	\item Marketshare:
+		\begin{itemize}
+        
+        \item Por receita. Receita líquida em 2011 de US\$5,95 bilhões:
+            	
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Comcel (Claro)		&	64,8\%	\\
+			Movistar			&	21,4\%	\\
+			Tigo				&	12,7\%	\\
+			Avantel				&	0,8\%	\\
+			Outras (Uff! Móvil, UNE, ETB)	&	0,3\%	\\
+			\end{tabular}
+        
+        \item Por linhas. Total de 45,6 milhões de linhas móveis:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Comcel (Claro)		&	63,5\%	\\
+			Movistar			&	25,1\%	\\
+			Tigo				&	10,7\%	\\
+			Avantel				&	0,2\%	\\
+			Outras (Uff! Móvil, UNE, ETB)	&	0,5\%	\\
+			\end{tabular}
+
+        	\begin{itemize}
+    		\item A Avantel é focada no mercado corporativo.
+    		\item A Uff! Móvil tinha 249 mil linhas no final de 2011, ultrapassando a Avantel que tinha 100 mil.
+        	\end{itemize}
+
+
+        \item Por receita de Dados e Serviços de Valor Agregado (VAS). Receita líquida em 2011 US\$1,51 bilhões:
+        	
+   			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Comcel (Claro)		&	62,2\%	\\
+			Movistar			&	19,4\%	\\
+			Tigo				&	17,5\%	\\
+			Avantel				&	0,1\%	\\
+			Outras (Uff! Móvil, UNE, ETB)	&	0,8\%	\\
+			\end{tabular}
+
+    	\end{itemize} % Marketshare
+    
+            
+%            \item A Colômbia é o maior mercado MVNO da América Latina com quatro operadoras: UNE, ETB, Uff! Móvil e Virgin Mobile. 
+
+    		\item A Colômbia é o mercado móvel mais concentrado da América Latina mas é também o de mais rápido crescimento em MVNOs. A Virgin Mobile lançou seus serviços em dezembro de 2012 usando a rede da Telefonica e uma estratégia similar à da Uff! Móvil, que teve uma taxa de crescimento muito alta após se lançar em 2010.
+				\begin{itemize}
+            	
+                \item A Colômbia tem a maioria das operadoras MVNO na América Latina, principalmente devido ao alto grau de concentração no mercado. Como a Tigo tem apenas 12,7\% de participação, abrir sua rede para outras companhias é parte da estratégia de otimizar sua eficiência.
+            	
+                \end{itemize}
+            
+            \item Mercado móvel atacado - serviços e regulamentação:
+            	\begin{itemize}
+                \item Obrigado a oferecer: terminação móvel (mobile termination; a CRC estabelece o teto do valor da cobrança), portabilidade numérica móvel.
+    			\item Desobrigado a oferecer: roaming nacional.
+                \item Local Loop Unbundling (LLU) é permitido, no entanto não é exigido das operadoras. As operadoras podem negociar livremente sobre preços e condições de acesso e a CRC intervém apenas em caso de resolução de disputas.
+                \end{itemize}
+                
+
+
+\end{itemize}
+
+
+
+%%
+%% México
+%%
+\subsubsection{México}
+
+Fonte: Frost \& Sullivan \cite{fs2}, MVNO Directory \cite{mvnodir}, dentre outras (citadas no texto).
+
+\begin{itemize}
+
+\item Estágio do mercado de telefonia móvel (nascente, cresimento, maduro): crescimento.
+
+\item 4 MNOs: Telcel (América Móvil), Movistar, Iusacell, Nextel.
+
+\item 2 MVNO: Maxcom Cel \cite{maxcom}, Megacel (usa a rede da Telcel) \cite{megacable}.
+
+%\item Linhas pré-pagas: 79,3 milhões; pós-pagas: 14,0 milhões (2011)
+
+%\item Linhas pré-pagas: 113,2 milhões; pós-pagas: 23,8 milhões (2017)
+
+
+	\item Linhas pré-pagas versus pós-pagas:
+
+		\begin{tabular}{c|c|c}
+		Ano		&	Linhas pré-pagas	&	Linhas pós-pagas	\\
+		\hline
+		2011	&	79,3 milhões (85,0\%) 	& 14,0 milhões (15,0\%)	\\
+		2017	&	113,2 milhões (82,6\%)	& 23,8 milhões (17,4\%) \\
+		\end{tabular}
+
+
+\item Taxa de penetração:
+    
+	\begin{tabular}{c|c l}
+	Ano		&	Taxa de penetração	&	\\
+	\hline
+	2011	&	85,4\% 		& (ARPL = US\$15,78 por mês)	\\
+	2012	&	92,1\%		&	\\
+	2013	&	98,7\%		&	\\
+	2017	&	120,4\%		& (ARPL = US\$17,37 por mês) \\
+	\end{tabular}
+	\begin{itemize}
+    	\item Em 2011 o México tinha a menor taxa de penetração da América Latina (85,4\%)
+    \end{itemize}
+
+\item Marketshare:
+	\begin{itemize}
+    \item Por receita. Receita líquida em 2011 de US\$17,66 bilhões:
+
+		\begin{tabular}{c|c}
+		Operadora	&	Marketshare	\\
+		\hline
+		Telcel (América Móvil)	&	69,6\%	\\
+		Nextel					&	12,7\%	\\
+		Movistar				&	12,2\%	\\
+		Iusacell				&	5,5\%	\\
+		Maxcom					&	0,04\%	\\
+		\end{tabular}
+		\begin{itemize}
+    		\item A Nextel tem foco no mercado corporativo, de alto ARPL.
+		\end{itemize}
+
+
+	\item Por linhas. Total de 93,3 milhões de linhas móveis:
+
+		\begin{tabular}{c|c}
+		Operadora	&	Marketshare	\\
+		\hline
+		Telcel (América Móvil)	&	70,4\%	\\
+		Nextel					&	4,0\%	\\
+		Movistar				&	21,2\%	\\
+		Iusacell				&	4,4\%	\\
+		Maxcom					&	0,04\%	\\
+		\end{tabular}
+
+
+    \item Por receita de Dados e Serviços de Valor Agregado (VAS). Receita líquida em 2011 US\$4,47 bilhões:
+
+		\begin{tabular}{c|c}
+		Operadora	&	Marketshare	\\
+		\hline
+		Telcel (América Móvil)	&	75,5\%	\\
+		Nextel					&	5,3\%	\\
+		Movistar				&	14,0\%	\\
+		Iusacell				&	5,2\%	\\
+		Maxcom					&	0,1\%	\\
+		\end{tabular}
+
+	\end{itemize}
+\end{itemize}
+
+%%
+%% Venezuela
+%%
+\subsubsection{Venezuela}
+
+Fonte: Frost \& Sullivan \cite{fs2}.
+
+\begin{itemize}
+
+\item 3 MNOs: Movistar, Movilnet, Digitel.
+
+\item Não havia MVNOs na Venezuela até dezembro de 2011.
+
+\item Estágio do mercado de telefonia móvel (nascente, cresimento, maduro): maduro.
+
+\item O controle e a influência do governo sobre o setor de telecomunicações é a principal característica do mercado de serviços móveis da Venezuela, que focou na implantação e expansão das redes 3G em 2010 e 2011.
+	\begin{itemize}
+    \item E.g.: a Movilnet foi nacionalizada em 2007.
+    \end{itemize}
+
+\item Não há portabilidade numérica móvel (MNP) na Venezuela.
+
+\item Linhas pré-pagas versus pós-pagas:
+
+	\begin{tabular}{c|c|c}
+	Ano		&	Linhas pré-pagas	&	Linhas pós-pagas	\\
+	\hline
+	2011	&	27,8 milhões (93,9\%) 	& 1,8 milhões (6,1\%)	\\
+	2017	&	33,5 milhões (93,1\%)	& 2,5 milhões (6,9\%) \\
+	\end{tabular}
+
+\item Taxa de penetração:
+
+\begin{tabular}{c|c l}
+Ano		&	Taxa de penetração	&	\\
+\hline
+2011	&	101,3\% 			& (ARPL = US\$18,61 por mês)	\\
+2012	&	101,1\%				&	\\
+2013	&	101,7\%				&	\\
+2017	&	112,7\%				& (ARPL = US\$17,37 por mês) \\
+\end{tabular}
+
+\item Marketshare:
+		\begin{itemize}
+    
+    	\item Por receita. Receita líquida em 2011 de US\$6,63 bilhões:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Movistar	&	52,6\%	\\
+			Movilnet	&	34,1\%	\\
+			Digitel		&	13,3\%	\\
+			\end{tabular}
+
+    	\item Por linhas. Total de 29,7 milhões de linhas móveis:
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Movistar	&	31,8\%	\\
+			Movilnet	&	49,9\%	\\
+			Digitel		&	18,3\%	\\
+			\end{tabular}
+
+    	\item Por receita de Dados e Serviços de Valor Agregado (VAS). Receita líquida em 2011 US\$1,95 bilhões:
+
+
+			\begin{tabular}{c|c}
+			Operadora	&	Marketshare	\\
+			\hline
+			Movistar	&	64,2\%	\\
+			Movilnet	&	22,2\%	\\
+			Digitel		&	13,6\%	\\
+			\end{tabular}
+		\end{itemize} % Marketshare
+
+\item Embora a Venezuela tenha a maior proporção de usuários pré-pagos da América Latina (98,5\% das linhas em serviço em 2011) a receita líquida média por linha (ARPL) também era a mais alta da América Latina, devido à alta concentração do mercado e competição limitada.
+
+\item Dados e VAS representam 29,5\% da receita total do mercado de serviços móveis na Venezuela. É o segundo maior na América Latina depois da Argentina. A principal razão é a alta utilização de SMS por usuário (mais de 250 mensagens por usuário por mês).
+
+
+
+\end{itemize}
+
+\newpage
+\section{Pontos genéricos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Sobre a alocação de custos de uma MVNO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sobre a alocação de custos de uma MVNO}
+
+Fonte: Ovum \cite{ovum1}
+    
+    \begin{itemize}
+    
+    \item A operação de uma MVNO tem a seguinte distribuição de custos (considerando-se o ano de 2012):
+		\begin{itemize}
+    	\item 45\% - aquisição de clientes, retenção e suporte - marketing, promoções, prêmios.
+
+    	\item 12\% - criação e administração de contas de clientes (faturamento, \textit{customer care})
+
+    	\item 43\% - integração com MNO, conectividade (minutos, mensagens, Mbytes), logística e provisionamento de chips SIM.
+        	\begin{itemize}
+            \item Há 5 anos atrás (2008) a conectividade era responsável por 60 a 70\% do custo de set up de uma MVNO.
+            \end{itemize}
+		\end{itemize}
+        
+    \item Novos elementos de custos (que se somam aos custos de aquisição e retenção de clientes, diminuindo ainda mais a parcela do custo de conectividade à MNO):
+		\begin{itemize}
+    
+    	\item Interoperabilidade com sistemas de TI de terceiros (cartões fidelidade, etc).
+
+    	\item Provisão de serviços de valor agregado além de minutos, mensagens e Mbytes.
+
+    	\item Custos de set up, integração com MNO, HLR (Home Location Register): a minimização desses custos é obtida através do modelo de agregação (MVNA, MVNE) e não representa uma oportunidade significativa de viabilização do negócio.
+
+    	\item Provisionamento e gestão de inventário de chips SIM: redução de custos é uma função direta da escala da operação. É um ``fator de higiene'' e não um gerador de receita.
+		\end{itemize}
+    
+    \item Se uma MVNO simplesmente tomar o preço da MNO e repassá-lo, seu negócio estará seriamente limitado. A criação de tarifas inovadoras e competitivas é uma parte importante da proposta de uma MVNO. As MNOs tem uma enorme dificuldade em fazer isso devido aos seus sistemas de TI legados.
+    	\begin{itemize}
+        \item A MVNO `Zact' lançou seus serviços nos Estados Unidos sobre a rede da Sprint com a proposta de um \textit{smartphone} que oferece customização do plano no próprio aparelho em tempo real. O cliente pode escolher a quantidade de dados, voz e texto (SMS) que quer pagar a qualquer momento e pode alterá-la também a qualquer momento, pelo próprio aparelho. O pacote de dados pode ser compartilhado entre vários dispositivos (por uma taxa de US\$4,99 por aparelho) e é possível controlar-se quanto cada aparelho pode utilizar de dados, voz e texto, inclusive com a habilidade de programar-se períodos de ``toque de recolher'' para controle parental. E se o usuário utilizar menos que os pacotes escolhidos, recebe os créditos de volta. \cite{zact}
+        
+        \item A Virgin Mobile do Chile usou uma estratégica pioneira no mercado local: foi a primeira a permitir aos clientes acesso ilimitado ao serviço de mensagens `WhatsApp'. \cite{latam1}
+        
+        \end{itemize}
+
+    \item Há uma tendência importante de mover CAPEX para OPEX, através do uso de soluções em nuvem (\textit{cloud}), diminuindo o impacto de grandes investimentos para o lançamento da operação e flexibilizando o crescimento da infra estrutura.
+
+	\end{itemize}
+    
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Miscelânea
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Miscelânea}
+
+Fontes: Frost \& Sullivan \cite{fs2}, Ovum \cite{ovum1}
+
+\begin{itemize}
+
+    \item Não é factível para operadoras móveis e MVNOs integrarem-se diretamente a menos que exista escala significativa. A integração direta requer um investimento da ordem de US\$1,5 milhões, que elimina muitos aspirantes a MVNO do mercado. Por outro lado, um série de MVNEs e MVNAs promovem-se pela sua capacidade de colocar MVNOs em operação por até US\$10 mil.
+
+    \item A maioria das MNOs busca MVNOs com mais de 100 mil subscrições (\textit{subscribers}). No entanto, a maioria das MVNOs não chegará a esse número dentro do primeiro ano de operação e outras nem chegarão perto; dessa forma, a estratégia comum aos dois lados é engajar-se através de um agregador (MVNA ou MVNE).
+
+    \item Sub-brand: usado para atacar mercados de nicho pela própria MNO. Em Maio de 2012 havia 224 operações sub-brand (Nota: subentende-se mercado da Europa e USA?).
+
+		\begin{itemize}
+    	\item GiffGaff - UK, grupo Telefonica O2 - mercado "budget".
+
+    	\item KPN - desenvolveu uma plataforma chamada Magnum para rodar seu negócio de MVNO e agora está vendendo essa plataforma como serviço para terceiros.
+		\end{itemize}
+        
+    \item Outra linha de negócio MVNO bem sucedida tem sido aquela onde obter lucro através dos serviços móveis não é o motivador principal, mas é usado para fortalecer o negócio principal da empresa. Exemplo: grandes redes de supermercados.
+
+    \item A proposta básica de atacado oferecida pelas MNOs às MVNOs ainda é baseada em valores por minuto, por mensagem e por Mbyte. A enorme maioria das relações diretas estão usando esse modelo, com pequenas variações de desconto por volume.
+
+    \item Medidas regulatórias que visam aumentar a competição: (a) redução de MTR, (b) implantação da portabilidade numérica para linhas móveis, (c) regulamentação de MVNOs.
+
+    \item O licenciamento de MVNOs contribui para o aumento da competição pois essa empresas tendem a ter grande foco em atendimento ao cliente.
+
+    \item Reduções severas na MTR impostas pelos Reguladores irá forçar as MNOs a buscar novas fontes de receita já que as tarifas de MTR representam em torno de 25\% das receitas da operadoras.
+
+    \item O único país onde o Regulador parece não intervir nas MTRs é a Argentina, e os preços têm aumentado entre 2011 e 2012.
+
+    \item No Brasil, as MTRs são negociadas livremente entre as operadoras e a Anatel espera incentivar a redução das MTRs através do corte nas tarifas fixo-para-móvel no próximo reajuste anual (2013?)
+
+    \item No Brasil, o modelo de custo (\textit{cost model}) será usado a partir de 2013 para determinar valores de referência, mas as MTRs continuarão a ser livremente negociadas.
+
+    \item Os impactos de cortes (nas MTRs) devem ser cuidadosamente analizados pelos Reguladores locais de forma a que estes sejam graduais (MTRs ainda são uma fonte substancial de receita para as operadoras).
+
+    \item Com o aumento da saturação do mercado, a redução das MTRs e da receita dos serviços de voz, as operadoras irão focar na introdução de serviços inovadores e VAS para aumentar a receita média por linha (ARPL).
+
+
+\end{itemize}
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Tabelas Resumo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Tabelas Resumo}
+
+\begin{itemize}
+
+\item Mercado de telefonia móvel e MVNO:
+
+\begin{tabular}{llcc}
+\toprule
+\multicolumn{2}{c}{Região / País} & Mercado de Telefonia Móvel & Mercado MVNO \\
+\midrule
+\multicolumn{2}{l}{Europa} & competitivo & desenvolvido \\
+\multicolumn{2}{l}{} & & (221+ MVNOs)\\
+\midrule
+\multicolumn{2}{l}{E.U.A.} & competitivo & desenvolvido\\
+\multicolumn{2}{l}{} & (63 MNOs) & (55 MVNOs)\\
+\midrule
+Ásia & China & (?) & em implantação \\
+     & Índia & competitivo & em crescimento \\
+\midrule
+América Latina	& Argentina 	& maduro (4 MNOs) 		& 1 MVNO \\
+				& Brasil 		& crescimento (7 MNOs) 	& 1 MVNO \\
+                & Chile 		& maduro (5 MNOs) 		& 1 MVNO \\
+                & Colombia 		& crescimento (4 MNOs) 	& 4 MVNOs \\
+                & México 		& crescimento (4 MNOs)	& 2 MVNOs \\
+                & Venezuela		& maduro (3 MNOs)		& nenhuma MVNO \\
+\bottomrule
+\end{tabular}
+
+
+\item Operadoras na América Latina:
+
+\begin{tabular}{lll}
+\toprule
+País	& Operadoras MNO & Operadoras MVNO \\
+\midrule
+Argentina 	& Movistar, Personal, Claro, Nextel & Nuestro\\
+Brasil 		& VIVO, TIM, Claro, Oi, Nextel, CTBC, & Porto Seguro\\
+			& Sercomtel							  & \\
+Chile 		& Movistar, Entel, Claro, Nextel, Mobilink & Virgin Mobile \\
+Colombia 	& Comcel, Movistar, Tigo, Avantel & UNE, ETB, Uff! Móvil, \\
+			&								  & Virgin Mobile \\
+México 		& Telcel, Movistar, Iusacell, Nextel & Maxcom Cel, Megacel \\
+Venezuela	& Movistar, Movilnet, Digitel & --- \\
+\bottomrule
+\end{tabular}
+
+\end{itemize}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%    Referências
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{thebibliography}{1}
+
+    \bibitem {china1} Gartner. {\em Relatório Gartner G00247860 - China's Experimental MVNO Market Opens a New Era of Competition}, 12 de abril de 2013.
+
+    \bibitem {ovum1} Ovum. {\em Mobile Wholesalers Pursue New Opportunity as MVNO Enablers}, 7 de Janeiro de 2013 : Reference Code: TE012-000439.
+
+    \bibitem {fs2} Frost \& Sullivan. {\em Latin American Mobile Services Markets Outlook I, 2012}, Março de 2013 : Código de referência NBB3-65.
+
+    \bibitem {latam1} Frost \& Sullivan. {\em 2013 Frost \& Sullivan Latin American MVNO Enterpreneurial Company of the Year Award}, 3 de maio de 2013.
+
+	\bibitem {fs1} Frost \& Sullivan. {\em Latin American Telecommunications Regulatory Outlook, 2012}, Fevereiro de 2013 : Código de referência 9846-63.
+
+	\bibitem {chile1} Ovum. {\em Chile (Country Regulation Overview)}, 28 de junho de 2012 : Reference Code: TE009-000857.
+
+    \bibitem {colombia1} Ovum. {\em Colombia (Country Regulation Overview)}, 12 de Junho de 2012 : Reference Code: TE009-000842.
+    
+    \bibitem {india1} Ovum. {\em India (Country Regulation Overview)}, 01 de agosto de 2012 : Reference Code: TE009-000875.
+
+    \bibitem {curan1} Current Analysis. {\em MVNO Services}, 19 de dezembro de 2012 : Market Assessment.
+    
+    \bibitem {tesco1} Tesco PLC. {\em \url{http://www.tescoplc.com/index.asp?pageid=276}}, acessado em 28 de maio de 2013.
+    
+    \bibitem {lebara1} Lebara Mobile press-release. {\em \url{http://www.assets.lebara.com/medias/sys_master/8799861243934.pdf}}, acessado em 28 de maio de 2013.
+    
+    \bibitem {dellus} Dell NetReady Mobile Broadband - Estados Unidos. {\em \url{http://www.dell.com/content/topics/topic.aspx/global/products/landing/en/dell-netready?c=us&l=en}}, acessado em 28 de maio de 2013.
+
+    \bibitem {delluk} Dell NetReady Mobile Broadband - Reino Unido. {\em \url{http://www.dell.com/learn/uk/en/ukbsdt2/campaigns/net-ready-landing-page-en?c=uk&l=en&s=bsd}}, acessado em 28 de maio de 2013.
+
+    \bibitem {ubis} Ubisurfer. {\em \url{http://www.ubisurfer.com/}}, acessado em 28 de maio de 2013.
+
+    \bibitem {amaz} Amazon Whispernet. {\em \url{http://www.amazon.com/gp/help/customer/display.html?nodeId=200375890}}, acessado em 28 de maio de 2013.
+
+    \bibitem {eeuk} EE (Everything Everywhere). {\em \url{http://ee.co.uk/}}, acessado em 28 de maio de 2013.
+
+	\bibitem {zact} Strategy Analytics. {\em New Zact 4G MVNO on Sprint Network Targets Demand for Personalized Mobile Plans}, 13 de maio de 2013.
+
+	\bibitem {simf} simfonics. {\em \url{http://www.simfonics.com/en/}}, acessado em 29 de maio de 2013.
+
+	\bibitem {maxcom} Maxcom Cel. {\em \url{http://www.telecompaper.com/news/maxcom-wins-approval-to-become-mvno-in-mexico-report--570039}}, acessado em 29 de maio de 2013.
+
+	\bibitem {megacable} Megacel. {\em \url{http://www.megacel.com.mx/index.html}}, acessado em 29 de maio de 2013.
+    
+	\bibitem {mvnodir} MVNO Directory. {\em \url{http://www.mvnodirectory.com/list.html}}, acessado em 29 de maio de 2013.
+
+	\bibitem {mnodir} MNO Directory. {\em \url{http://www.mnodirectory.com}}, acessado em 30 de maio de 2013.
+    
+\end{thebibliography}
+
+
+\end{document}
+
+
+
+
+
